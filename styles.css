@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+main{
+background-image: url("./assets/textura_billete.webp");
+filter:blur(1);
+height: 100vh;
+width: 100vw;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 40px 20px 40px 20px;
+}
+#contenedorBienvenida{
+display: flex;
+flex-direction: column;
+padding: 20px;
+align-items: center;
+justify-content: center;
+height: 100vh;
+width: 100vw;
+}
+#bienvenida{
+    background-color:rgba(0, 0, 0, 0.7);
+    width: 80%;
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#bienvenida h1{
+    color:#ffffff;
+    font-size: 3rem;
+    text-align: center;
+}
+#bienvenida p {
+    color:#ffffff;
+    font-size: 1.4rem;
+    text-align: center;
+}
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.form-label{
+    max-width: 400px;
+}
+.form-control{
+    height: 50px;
+}
+
+#saludo{
+    background-color:rgba(0, 0, 0, 0.7);
+    width: 50%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#saludo h2{
+    color:#ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#saludo p {
+    color:#ffffff;
+    font-size: 1.4rem;
+    text-align: center;
+}
