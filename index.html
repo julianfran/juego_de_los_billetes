@@ -19,31 +19,25 @@
 <body>
     <main id="main">
         <div id="contenedor">
-        <div id="contenedorBienvenida">
-            <div id="bienvenida">
-                <h1>Juego de los billetes</h1>
-                <p> 💵 🪙</p>
-                <p>¿Sabés qué billetes y monedas valen más?</p>
-                <form>
-                    <div class="mb-3">
-                        <label for="nombreUsuario" class="form-label"></label>
-                        <input type="text" class="form-control" id="nombreUsuario" placeholder="Ingresá tu nombre">
-                    </div>
-                    <button onclick="imprimirNombre(),stopDefAction(event)" class="btn btn-light"><i
-                            class="bi bi-controller"></i> ¡A jugar!</button>
-                </form>
+            <div id="contenedorBienvenida">
+                <div id="bienvenida">
+                    <h1>Juego de los billetes</h1>
+                    <p> 💵 🪙</p>
+                    <p>¿Sabés qué billetes y monedas valen más?</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombreUsuario" class="form-label"></label>
+                            <input type="text" class="form-control" id="nombreUsuario" placeholder="Ingresá tu nombre">
+                        </div>
+                        <button onclick="play(),stopDefAction(event)" class="btn btn-light"><i
+                                class="bi bi-controller"></i> ¡A jugar!</button>
+                    </form>
+                </div>
             </div>
+            
         </div>
-    </div>
-
-    <div id="billetes">
-        <div id="opcion1">
-            <img src="" alt="" onclick="">
+        <div id="contenedorBilletes">
         </div>
-        <div id="opcion2">
-            <img src="" alt="" onclick="">
-        </div>
-    </div>
     </main>
 
 
@@ -52,10 +46,6 @@
         crossorigin="anonymous"></script>
     <script src="data.js"></script>
     <script src="main.js"></script>
-    <script src="jugador.js"></script>
-
-
-
 </body>
 
 </html>
