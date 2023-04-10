@@ -14,6 +14,60 @@ console.log(billeteAleatorio1)
 console.log(billeteAleatorio2.img)
 
 
+//Contador de puntaje
+let puntaje = 0
+
+let opcion1MasGrande = billeteAleatorio1.valor > billeteAleatorio2.valor;
+let opcion2MasGrande = billeteAleatorio1.valor < billeteAleatorio2.valor;
+let opcionIguales = billeteAleatorio1.valor === billeteAleatorio2.valor;
+//Respuestas
+const respuesta = (opcion =>{
+ 
+  if(opcion){
+    puntaje += 3
+    console.log("¡Correcto! Has sumado 3 puntos")
+  }
+  else{
+    console.log("Respuesta incorrecta")
+  }
+
+})
+
+//Preguntas
+
+const preguntas = [
+  `<h2>¿Qué billete o moneda tiene MAS valor?</h2>
+  <div id="opciones">
+  <div id="opcion1">
+    <h3></h3>
+    <img src="${billeteAleatorio1.img}" alt="">
+    <button type="button" class="btn btn-success" onclick="respesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
+
+  </div>
+  <div id="opcion2">
+    <h3></h3>
+     <img src="${billeteAleatorio2.img}" alt="">
+     <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
+  </div>
+  </div>
+  <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
+`,
+`<h2>¿Qué billete o moneda tiene MENOS valor?</h2>
+  <div id="opciones">
+  <div id="opcion1">
+    <h3></h3>
+    <img src="${billeteAleatorio1.img}" alt="">
+    <button type="button" class="btn btn-success" onclick="respesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
+
+  </div>
+  <div id="opcion2">
+    <h3></h3>
+     <img src="${billeteAleatorio2.img}" alt="">
+     <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
+  </div>
+  </div>
+  <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
+` ]
 
 // Borrar elemento hijo
 const borrarDiv = ((padre, hijo) => {
@@ -34,7 +88,7 @@ let imprimirNombre = (() => {
   let imprimir = `
                     <div id="saludo">
                     <h2>¡Hola ${jugador}!</h2>
-                    <p>Vamos con el primer desafío:</p>
+                    <p>¡Juguemos!</p>
                     </div>
                   `
   borrarDiv(contenedor, contenedorBienvenida)
@@ -42,16 +96,7 @@ let imprimirNombre = (() => {
 })
 
 let mostrarBilletes = (() => {
-  let imprimir = `
-                    <div id="opcion1">
-                      <h3></h3>
-                      <img src="${billeteAleatorio1.img}" alt="">
-                    </div>
-                    <div id="opcion2">
-                      <h3></h3>
-                       <img src="${billeteAleatorio2.img}" alt="">
-                    </div>
-                  `;
+  let imprimir = preguntas[Math.floor(Math.random() * preguntas.length)];
   contenedorBilletes.innerHTML = imprimir
 })
 

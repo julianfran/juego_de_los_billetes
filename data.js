@@ -11,7 +11,7 @@ const data = {
         },
         {
             _id: 2,
-            "nombre": "Moneda de 1 peso - Árboles de la República Argentina",
+            "nombre": "Moneda de 1 peso",
             "personaje": "Jacarandá",
             "date": 2017,
             "valor": 1,
@@ -20,8 +20,8 @@ const data = {
         },
         {
             _id: 3,
-            "nombre": "Moneda de 2 pesos - Bicentenario de la Revolución de Mayo de 1810",
-            "personaje": "",
+            "nombre": "Moneda de 2 pesos",
+            "personaje": "Bicentenario de la Revolución de Mayo de 1810",
             "date": 2011,
             "valor": 2,
             "tipo": "moneda",
@@ -29,7 +29,7 @@ const data = {
         },
         {
             _id: 4,
-            "nombre": "Moneda de 2 pesos - Árboles de la República Argentina",
+            "nombre": "Moneda de 2 pesos",
             "personaje": "Palo borracho",
             "date": 2018,
             "valor": 2,
@@ -38,7 +38,7 @@ const data = {
         },
         {
             _id: 5,
-            "nombre": "Moneda de 5 pesos - Árboles de la República Argentina",
+            "nombre": "Moneda de 5 pesos",
             "personaje": "Arrayán",
             "date": 2017,
             "valor": 5,
@@ -47,7 +47,7 @@ const data = {
         },
         {
             _id: 6,
-            "nombre": "Moneda de 10 pesos - Árboles de la República Argentina",
+            "nombre": "Moneda de 10 pesos",
             "personaje": "Caldén",
             "date": 2018,
             "valor": 10,
