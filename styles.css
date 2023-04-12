@@ -1,10 +1,11 @@
 * {
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     margin: 0;
-    padding: 0;
+    padding: 0 !important;
     line-height: 2rem;
     font-family: 'Poppins', sans-serif;
 }
+
 body{
     background-image: url("./assets/textura_billete.webp");
 }
@@ -14,12 +15,10 @@ width: 100vw;
 display: flex;
 flex-direction: column;
 align-items: center;
-padding: 40px 20px 40px 20px;
 }
 #contenedorBienvenida{
 display: flex;
 flex-direction: column;
-padding: 20px;
 align-items: center;
 justify-content: center;
 height: 100vh;
@@ -28,11 +27,13 @@ width: 100vw;
 #bienvenida{
     background-color:rgba(0, 0, 0, 0.7);
     width: 80%;
-    padding: 35px;
+    padding: 35px !important;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    top: -100px;
 }
 #bienvenida h1{
     color:#ffffff;
@@ -55,6 +56,7 @@ form{
 }
 .form-control{
     height: 50px;
+    padding: 0.375rem 0.75rem !important;
 }
 
 #contenedor{
@@ -67,24 +69,44 @@ form{
     margin: 0 0 30px 0; */
 }
 #saludo{
-    background-color:rgba(0, 0, 0, 0.7);
-    min-width: 50%;
-    padding: 15px;
+    padding: 15px !important;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin: 0 0 30px 0;
+    margin: 0px 0 30px 0;
+    font-family: 'Silkscreen', cursive;
+    background-image: url(./assets/marcador.png);
+    background-size: cover;
+width: 300px;
+height: 205px;
 }
 #saludo h2{
-    color:#ffffff;
+    color: #fdf91f;
     text-align: center;
     margin-bottom: 20px;
+    position: relative;
+    left: 35px;
+    top: 10px;
+    font-family: 'Silkscreen', cursive;
 }
 #saludo p {
     color:#ffffff;
     font-size: 1.4rem;
     text-align: center;
+}
+#intentosYPuntaje{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+top: 50px;
+
+
+gap: 120px;
+}
+#intentosYPuntaje p{
+    font-family: 'Silkscreen', cursive;
+    color: #fdf91f;
 }
 #contenedorBilletes{
     display: flex;
@@ -123,4 +145,5 @@ form{
 }
 .btn{
     max-width: 250px;
+    padding: 8px !important;
 }
