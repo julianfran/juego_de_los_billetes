@@ -1,9 +1,12 @@
 const mostrarNombre = document.querySelector('input')
 const saludo = document.getElementById('saludo')
+const header = document.querySelector('header')
 const contenedorBienvenida = document.getElementById('contenedorBienvenida')
 const bienvenida = document.getElementById('bienvenida')
 const contenedor = document.getElementById('contenedor')
 const contenedorBilletes = document.getElementById('contenedorBilletes')
+const respuestaCorrecta = document.getElementById('correcto')
+const respuestaIncorrecta = document.getElementById('incorrecto')
 
 const tablero = document.getElementById('intentosYPuntaje')
 
@@ -40,28 +43,60 @@ let opciones = (()=>{
 
 
 
+
 //Respuestas
+let correcto
+let incorrecto
+let juegoTerminado
+let alertas = (()=>{
+  correcto = `<div id="correcto">
+  <i class="bi bi-emoji-sunglasses"></i>
+  <p>RESPUESTA CORRECTA. SUMASTE 3 PUNTOS</p>
+</div>`
+
+
+incorrecto = `<div id="incorrecto">
+<i class="bi bi-emoji-dizzy"></i>
+<p>RESPUESTA INCORRECTA. RESTASTE 1 PUNTO</p>
+</div>`
+
+juegoTerminado = `<div id="juegoTerminado">
+  <i class="bi bi-cash-coin"></i>
+  <p>SE ACABARON LOS INTENTOS. EN TOTAL SUMASTE ${puntaje} PUNTOS</p>
+  <button onclick="play(),stopDefAction(event)" class="btn btn-light"><i
+        class="bi bi-controller"></i> ¡JUGAR DE NUEVO!</button>
+</div>`
+})
+
+
+
+
 const respuesta = ((opcion) =>{
   const tablero = document.getElementById('intentosYPuntaje')
+  intentos += 1
+  alertas()
   if(opcion){
     puntaje += 3
-    console.log("¡Correcto! Has sumado 3 puntos")
-    console.log(puntaje)
+    contenedorBilletes.innerHTML = correcto
   }
   else{
     puntaje -= 1
-    console.log("Respuesta incorrecta")
-    console.log(puntaje)
+    contenedorBilletes.innerHTML = incorrecto
   }
-  intentos += 1
- let imprimir = `  <div id="intentos"><p>${intentos}/15</p>
- </div>
- <div id="puntaje"><p>${puntaje}</p>
- </div>`
- tablero.innerHTML = imprimir
- mostrarBilletes()
+  if(intentos == 16){
+    alertas()
+    contenedorBilletes.innerHTML = juegoTerminado
+  }
+  else{
+    let imprimir = `  <p>PUNTAJE: ${puntaje} | INTENTOS: ${intentos}/15</p>`
+    tablero.innerHTML = imprimir
+    setTimeout(function(){mostrarBilletes()},4000)
+  }
+ 
 
 })
+
+//
 
 //Preguntas
 let imprimirPregunta
@@ -119,18 +154,28 @@ function stopDefAction(evt) {
 let imprimirNombre = (() => {
   localStorage.setItem("jugador", nombreUsuario.value)
   jugador = localStorage.getItem("jugador")
-  let imprimir = `
-                    <div id="saludo">
-                    <h2>${jugador}</h2>
+  // let imprimir = `
+  //                   <div id="saludo">
+  //                   <h2>${jugador}</h2>
                     
-                    <div id="intentosYPuntaje">
-                    </div>
-                    </div>
-                  `
+  //                   <div id="intentosYPuntaje">
+  //                   </div>
+  //                   </div>
+  //                 `
+  let imprimirHeader = `
+    <h1>JUEGO DE LOS BILLETES</h1>
+    <h2>JUGADOR/A: ${jugador}</h2>
+    <div id="intentosYPuntaje">
+    <p>PUNTAJE: ${puntaje} | INTENTOS: ${intentos}/15</p>
+    </div>
+    
+  `
   borrarDiv(contenedor, contenedorBienvenida)
-  contenedor.innerHTML = imprimir
+  header.style.cssText = "display:flex"
+  header.innerHTML = imprimirHeader
 })
 
+let actualizarPuntaje
 let mostrarBilletes = (() => {
   
     billetesAleatorios()
@@ -144,6 +189,8 @@ let mostrarBilletes = (() => {
 })
 
 const play = (() =>{
+  intentos = 0
+  puntaje = 0
 imprimirNombre()
 mostrarBilletes()
 })

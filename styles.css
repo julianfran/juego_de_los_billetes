@@ -5,9 +5,29 @@
     line-height: 2rem;
     font-family: 'Poppins', sans-serif;
 }
-
+body {
+    background-color: #dbddc0 !important;
+}
 header{
-    background-color: #fdf91f;
+    background-color: #146863;
+    height: 130px;
+    color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px !important;
+    display: none
+}
+header h1{
+    color: #f6efed !important;
+    font-size: 2rem !important ;
+}
+header h2{
+    color: #dbddc0;
+    font-size: 1.5rem;
+}
+header p{
+    color: #f6efed;
+    font-size: 1.2rem;
 }
 main{
 filter:blur(1);
@@ -15,6 +35,7 @@ width: 100vw;
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-top:30px
 }
 #contenedorBienvenida{
 display: flex;
@@ -25,7 +46,7 @@ height: 100vh;
 width: 100vw;
 }
 #bienvenida{
-    background-color:rgba(0, 0, 0, 0.7);
+    background-color:#146863;
     width: 80%;
     padding: 35px !important;
     display: flex;
@@ -36,7 +57,7 @@ width: 100vw;
     top: -100px;
 }
 #bienvenida h1{
-    color:#ffffff;
+    color:#dbddc0;
     font-size: 3rem;
     text-align: center;
 }
@@ -95,18 +116,9 @@ height: 205px;
     font-size: 1.4rem;
     text-align: center;
 }
-#intentosYPuntaje{
-    display: flex;
-    flex-direction: row;
-    position: relative;
-top: 50px;
-
-
-gap: 120px;
-}
 #intentosYPuntaje p{
-    font-family: 'Silkscreen', cursive;
-    color: #fdf91f;
+    color: #f6efed;
+    font-size: 1.2rem;
 }
 #contenedorBilletes{
     display: flex;
@@ -146,4 +158,13 @@ gap: 120px;
 .btn{
     max-width: 250px;
     padding: 8px !important;
+}
+#correcto, #incorrecto, #juegoTerminado {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+    align-items: center;
+    background-color: #146863;
+    color:#f6efed;
+    padding: 15px !important;
 }
