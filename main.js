@@ -9,25 +9,36 @@ const tablero = document.getElementById('intentosYPuntaje')
 
 
 //Elementos aleatorios
-const dataBilletes = data.billetes
-let billeteAleatorio1 = dataBilletes[Math.floor(Math.random() * data.billetes.length)]
-let billeteAleatorio2 = dataBilletes[Math.floor(Math.random() * data.billetes.length)]
-console.log(billeteAleatorio1)
-console.log(billeteAleatorio2)
+
+let dataBilletes = data.billetes
+
+let billeteAleatorio1
+let billeteAleatorio2 
+let billetesAleatorios = (()=>{
+  dataBilletes = data.billetes
+  billeteAleatorio1 = dataBilletes[Math.floor(Math.random() * data.billetes.length)]
+  billeteAleatorio2 = dataBilletes[Math.floor(Math.random() * data.billetes.length)]
+  console.log(billeteAleatorio1)
+  console.log(billeteAleatorio2)
+
+})
+
 
 
 
 //Contador de puntaje
 let puntaje = 0
 let intentos = 0
+let opcion1MasGrande
+  let opcion2MasGrande
+  let opcionIguales
+let opciones = (()=>{
+  opcion1MasGrande = billeteAleatorio1.valor > billeteAleatorio2.valor;
+  opcion2MasGrande = billeteAleatorio1.valor < billeteAleatorio2.valor;
+  opcionIguales = billeteAleatorio1.valor === billeteAleatorio2.valor;
+})
 
-let opcion1MasGrande = billeteAleatorio1.valor > billeteAleatorio2.valor;
-let opcion2MasGrande = billeteAleatorio1.valor < billeteAleatorio2.valor;
-let opcionIguales = billeteAleatorio1.valor === billeteAleatorio2.valor;
 
-console.log(opcion1MasGrande)
-    console.log(opcion2MasGrande)
-    console.log(opcionIguales)
 
 //Respuestas
 const respuesta = ((opcion) =>{
@@ -53,42 +64,43 @@ const respuesta = ((opcion) =>{
 })
 
 //Preguntas
-
-let preguntas = [
-  `<h2>¿Qué billete o moneda tiene MAS valor?</h2>
-  <div id="opciones">
-  <div id="opcion1">
-    <h3></h3>
-    <img src="${billeteAleatorio1.img}" alt="">
-    <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
-
-  </div>
-  <div id="opcion2">
-    <h3></h3>
-     <img src="${billeteAleatorio2.img}" alt="">
-     <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
-  </div>
-  </div>
-  <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
-`,
-`<h2>¿Qué billete o moneda tiene MENOS valor?</h2>
-  <div id="opciones">
-  <div id="opcion1">
-    <h3></h3>
-    <img src="${billeteAleatorio1.img}" alt="">
-    <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
-
-  </div>
-  <div id="opcion2">
-    <h3></h3>
-     <img src="${billeteAleatorio2.img}" alt="">
-     <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
-  </div>
-  </div>
-  <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
-` ]
-let imprimirPregunta = preguntas[Math.floor(Math.random() * preguntas.length)];
-console.log(imprimirPregunta);
+let imprimirPregunta
+let preguntas = (()=>{
+  let listaPreguntas = [
+    `<h2>¿Qué billete o moneda tiene MAS valor?</h2>
+    <div id="opciones">
+    <div id="opcion1">
+      <h3></h3>
+      <img src="${billeteAleatorio1.img}" alt="">
+      <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
+  
+    </div>
+    <div id="opcion2">
+      <h3></h3>
+       <img src="${billeteAleatorio2.img}" alt="">
+       <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
+    </div>
+    </div>
+    <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
+  `,
+  `<h2>¿Qué billete o moneda tiene MENOS valor?</h2>
+    <div id="opciones">
+    <div id="opcion1">
+      <h3></h3>
+      <img src="${billeteAleatorio1.img}" alt="">
+      <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
+  
+    </div>
+    <div id="opcion2">
+      <h3></h3>
+       <img src="${billeteAleatorio2.img}" alt="">
+       <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
+    </div>
+    </div>
+    <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
+  ` ];
+  imprimirPregunta = listaPreguntas[Math.floor(Math.random() * listaPreguntas.length)];
+}) 
 
 
 // Borrar elemento hijo
@@ -120,62 +132,12 @@ let imprimirNombre = (() => {
 })
 
 let mostrarBilletes = (() => {
-  if(intentos == 0){
-    imprimirPregunta = preguntas[Math.floor(Math.random() * preguntas.length)];
   
-    contenedorBilletes.innerHTML = imprimirPregunta
-  }
-  else{
-    billeteAleatorio1 = dataBilletes[Math.floor(Math.random() * data.billetes.length)]
-    billeteAleatorio2 = dataBilletes[Math.floor(Math.random() * data.billetes.length)]
-
-    opcion1MasGrande = billeteAleatorio1.valor > billeteAleatorio2.valor;
-    opcion2MasGrande = billeteAleatorio1.valor < billeteAleatorio2.valor;
-  opcionIguales = billeteAleatorio1.valor === billeteAleatorio2.valor;
-
-    console.log(billeteAleatorio1)
-    console.log(billeteAleatorio2)
-    console.log(opcion1MasGrande)
-    console.log(opcion2MasGrande)
-    console.log(opcionIguales)
-    preguntas = [
-      `<h2>¿Qué billete o moneda tiene MAS valor?</h2>
-      <div id="opciones">
-      <div id="opcion1">
-        <h3></h3>
-        <img src="${billeteAleatorio1.img}" alt="">
-        <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
-    
-      </div>
-      <div id="opcion2">
-        <h3></h3>
-         <img src="${billeteAleatorio2.img}" alt="">
-         <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
-      </div>
-      </div>
-      <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
-    `,
-    `<h2>¿Qué billete o moneda tiene MENOS valor?</h2>
-      <div id="opciones">
-      <div id="opcion1">
-        <h3></h3>
-        <img src="${billeteAleatorio1.img}" alt="">
-        <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
-    
-      </div>
-      <div id="opcion2">
-        <h3></h3>
-         <img src="${billeteAleatorio2.img}" alt="">
-         <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
-      </div>
-      </div>
-      <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
-    ` ]
-  imprimirPregunta = preguntas[Math.floor(Math.random() * preguntas.length)];
-  console.log(imprimirPregunta);
-
+    billetesAleatorios()
+    opciones()
+    preguntas()
+  
       contenedorBilletes.innerHTML = imprimirPregunta
-  }
   
 
   

@@ -6,8 +6,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
-    background-image: url("./assets/textura_billete.webp");
+header{
+    background-color: #fdf91f;
 }
 main{
 filter:blur(1);
