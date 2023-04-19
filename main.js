@@ -50,20 +50,22 @@ let incorrecto
 let juegoTerminado
 let alertas = (()=>{
   correcto = `<div id="correcto">
-  <i class="bi bi-emoji-sunglasses"></i>
-  <p>RESPUESTA CORRECTA. SUMASTE 3 PUNTOS</p>
+  <img id="imgRespuesta" src="./assets/correcto.png" alt="respuesta correcta">
+  <p id="pRespuesta">RESPUESTA CORRECTA.</p> <p>SUMASTE 3 PUNTOS</p>
 </div>`
 
 
 incorrecto = `<div id="incorrecto">
-<i class="bi bi-emoji-dizzy"></i>
-<p>RESPUESTA INCORRECTA. RESTASTE 1 PUNTO</p>
+<img id="imgRespuesta" src="./assets/incorrecto.png" alt="respuesta incorrecta">
+<p id="pRespuesta">RESPUESTA INCORRECTA.</p><p> RESTASTE 1 PUNTO</p>
 </div>`
 
-juegoTerminado = `<div id="juegoTerminado">
-  <i class="bi bi-cash-coin"></i>
-  <p>SE ACABARON LOS INTENTOS. EN TOTAL SUMASTE ${puntaje} PUNTOS</p>
-  <button onclick="play(),stopDefAction(event)" class="btn btn-light"><i
+juegoTerminado = `
+<img id="imgJuegoTerminado" src="./assets/gameOver.png" alt="Juego terminado">
+<div id="juegoTerminado">
+
+  <p>SE TE ACABARON LOS INTENTOS, <strong>${jugador.toUpperCase()}</strong></p> <p>OBTUVISTE <strong>${puntaje} PUNTOS.</strong></p>
+  <a role="buttom" href="./index.html" class="btn btn-light"><i
         class="bi bi-controller"></i> ¡JUGAR DE NUEVO!</button>
 </div>`
 })
@@ -83,9 +85,17 @@ const respuesta = ((opcion) =>{
     puntaje -= 1
     contenedorBilletes.innerHTML = incorrecto
   }
-  if(intentos == 16){
+  if(intentos == 3){
     alertas()
-    contenedorBilletes.innerHTML = juegoTerminado
+    if(opcion){
+      puntaje += 3
+      contenedorBilletes.innerHTML = correcto
+    }
+    else{
+      puntaje -= 1
+      contenedorBilletes.innerHTML = incorrecto
+    }
+    setTimeout(function(){contenedorBilletes.innerHTML = juegoTerminado},4000) 
   }
   else{
     let imprimir = `  <p>PUNTAJE: ${puntaje} | INTENTOS: ${intentos}/15</p>`
@@ -102,37 +112,37 @@ const respuesta = ((opcion) =>{
 let imprimirPregunta
 let preguntas = (()=>{
   let listaPreguntas = [
-    `<h2>¿Qué billete o moneda tiene MAS valor?</h2>
+    `<h2>¿QUÉ BILLETE O MONEDA TIENE <strong>MÁS</strong> VALOR?</h2>
     <div id="opciones">
     <div id="opcion1">
       <h3></h3>
       <img src="${billeteAleatorio1.img}" alt="">
-      <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
+      <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre.toUpperCase()}</button>
   
     </div>
     <div id="opcion2">
       <h3></h3>
        <img src="${billeteAleatorio2.img}" alt="">
-       <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
+       <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre.toUpperCase()}</button>
     </div>
     </div>
-    <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
+    <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">VALEN LO MISMO</button>
   `,
-  `<h2>¿Qué billete o moneda tiene MENOS valor?</h2>
+  `<h2>¿QUÉ BILLETE O MONEDA TIENE <strong>MENOS</strong> VALOR?</h2>
     <div id="opciones">
     <div id="opcion1">
       <h3></h3>
       <img src="${billeteAleatorio1.img}" alt="">
-      <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre}</button>
+      <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio1.nombre.toUpperCase()}</button>
   
     </div>
     <div id="opcion2">
       <h3></h3>
        <img src="${billeteAleatorio2.img}" alt="">
-       <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre}</button>
+       <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre.toUpperCase()}</button>
     </div>
     </div>
-    <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">¡Valen lo mismo!</button>
+    <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">VALEN LO MISMO</button>
   ` ];
   imprimirPregunta = listaPreguntas[Math.floor(Math.random() * listaPreguntas.length)];
 }) 
@@ -164,7 +174,7 @@ let imprimirNombre = (() => {
   //                 `
   let imprimirHeader = `
     <h1>JUEGO DE LOS BILLETES</h1>
-    <h2>JUGADOR/A: ${jugador}</h2>
+    <h2>JUGADOR/A: ${jugador.toUpperCase()}</h2>
     <div id="intentosYPuntaje">
     <p>PUNTAJE: ${puntaje} | INTENTOS: ${intentos}/15</p>
     </div>
