@@ -85,7 +85,7 @@ const respuesta = ((opcion) =>{
     puntaje -= 1
     contenedorBilletes.innerHTML = incorrecto
   }
-  if(intentos == 3){
+  if(intentos == 10){
     alertas()
     if(opcion){
       puntaje += 3
@@ -176,7 +176,7 @@ let imprimirNombre = (() => {
     <h1>JUEGO DE LOS BILLETES</h1>
     <h2>JUGADOR/A: ${jugador.toUpperCase()}</h2>
     <div id="intentosYPuntaje">
-    <p>PUNTAJE: ${puntaje} | INTENTOS: ${intentos}/15</p>
+    <p>PUNTAJE: ${puntaje} | INTENTOS: ${intentos}/10</p>
     </div>
     
   `
