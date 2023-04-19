@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "public",
+    "site":"juegodelosbilletes",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

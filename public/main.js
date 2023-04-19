@@ -51,13 +51,13 @@ let juegoTerminado
 let alertas = (()=>{
   correcto = `<div id="correcto">
   <img id="imgRespuesta" src="./assets/correcto.png" alt="respuesta correcta">
-  <p id="pRespuesta">RESPUESTA CORRECTA.</p> <p>SUMASTE 3 PUNTOS</p>
+  <p id="pRespuesta">RESPUESTA CORRECTA.</p> <p id="pRespuesta">SUMASTE 3 PUNTOS</p>
 </div>`
 
 
 incorrecto = `<div id="incorrecto">
 <img id="imgRespuesta" src="./assets/incorrecto.png" alt="respuesta incorrecta">
-<p id="pRespuesta">RESPUESTA INCORRECTA.</p><p> RESTASTE 1 PUNTO</p>
+<p id="pRespuesta">RESPUESTA INCORRECTA.</p><p id="pRespuesta"> RESTASTE 1 PUNTO</p>
 </div>`
 
 juegoTerminado = `
@@ -98,7 +98,7 @@ const respuesta = ((opcion) =>{
     setTimeout(function(){contenedorBilletes.innerHTML = juegoTerminado},4000) 
   }
   else{
-    let imprimir = `  <p>PUNTAJE: ${puntaje} | INTENTOS: ${intentos}/15</p>`
+    let imprimir = `  <p>PUNTAJE: ${puntaje} | INTENTOS: ${intentos}/10</p>`
     tablero.innerHTML = imprimir
     setTimeout(function(){mostrarBilletes()},4000)
   }
@@ -126,7 +126,8 @@ let preguntas = (()=>{
        <button type="button" class="btn btn-success" onclick="respuesta(opcion2MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre.toUpperCase()}</button>
     </div>
     </div>
-    <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">VALEN LO MISMO</button>
+    <img src="./assets/igual.png" alt="signo igual">
+    <button type="button" class="btn btn-success" onclick="respuesta(opcionIguales)">VALEN LO MISMO</button>
   `,
   `<h2>¿QUÉ BILLETE O MONEDA TIENE <strong>MENOS</strong> VALOR?</h2>
     <div id="opciones">
@@ -142,7 +143,8 @@ let preguntas = (()=>{
        <button type="button" class="btn btn-success" onclick="respuesta(opcion1MasGrande)"><i class="bi bi-hand-index"></i> ${billeteAleatorio2.nombre.toUpperCase()}</button>
     </div>
     </div>
-    <button type="button" class="btn btn-warning" onclick="respuesta(opcionIguales)">VALEN LO MISMO</button>
+    <img src="./assets/igual.png" alt="signo igual">
+    <button type="button" class="btn btn-success" onclick="respuesta(opcionIguales)">VALEN LO MISMO</button>
   ` ];
   imprimirPregunta = listaPreguntas[Math.floor(Math.random() * listaPreguntas.length)];
 }) 

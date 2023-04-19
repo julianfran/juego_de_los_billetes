@@ -16,13 +16,14 @@ header {
     color: #ffffff;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px !important;
+    padding: 10px !important;
     display: none
 }
 
 header h1 {
     color: #f6efed !important;
     font-size: 2rem !important;
+    text-align: center;
 }
 
 header h2 {
@@ -62,7 +63,7 @@ main {
     flex-direction: column;
     align-items: center;
     position: relative;
-    top: -100px;
+    top: -100px
 }
 
 #bienvenida h1 {
@@ -144,7 +145,7 @@ form {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 30px !important;
     gap: 30px;
     /* box-shadow: 2px 2px 10px #000; */
 }
@@ -183,19 +184,24 @@ form {
     max-width: 250px;
     padding: 8px !important;
 }
-.btn-success{
+
+.btn-success {
     background-color: #146863 !important;
-    border-color: #146863 !important;;
+    border-color: #146863 !important;
+    ;
 }
-.btn-success:hover{
+
+.btn-success:hover {
     background-color: #0e504b !important;
 }
-.btn-warning{
+
+.btn-warning {
     background-color: #222 !important;
     border-color: #222 !important;
-    color:#fff !important
+    color: #fff !important
 }
-.btn-warning:hover{
+
+.btn-warning:hover {
     background-color: #2c2c2c !important;
 }
 
@@ -223,6 +229,9 @@ form {
     position: relative;
     z-index: 2;
 }
+#juegoTerminado p {
+    text-align: center;
+}
 
 #imgRespuesta {
     position: relative;
@@ -232,10 +241,106 @@ form {
 #pRespuesta {
     position: relative;
     top: -50px;
+    text-align: center;
 }
 
 #imgJuegoTerminado {
     height: 250px !important;
     position: relative;
     z-index: 1;
+}
+
+
+
+@media (max-width: 660px) {
+    #bienvenida h1 {
+        font-size: 2.5rem;
+    }
+
+    #bienvenida {
+        margin-top: 200px;
+        width: 90%;
+    }
+
+    #bienvenida p {
+        font-size: 1.1rem;
+    }
+
+    #contenedorBilletes img {
+        height: 100px;
+    }
+
+    #opciones {
+        gap: 5px
+    }
+
+    #opcion1,
+    #opcion2 {
+        gap: 15px
+    }
+
+    #contenedorBilletes {
+        gap: 20px;
+        padding-top: 15px !important
+    }
+    #correcto,
+#incorrecto, #juegoTerminado{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+}
+
+@media (max-width: 377px) {
+    header{
+        min-height: 80px;
+    }
+    header h1{
+        display: none;
+    }
+    header p{
+        margin-bottom: 2px;
+    }
+    main{
+        margin-top:5px
+    }
+    #bienvenida h1 {
+        font-size: 2rem;
+    }
+    h2{
+        font-size: 1.2rem !important;
+    }
+    #bienvenida {
+        margin-top: 100px;
+    }
+
+    #bienvenida p {
+        font-size: 1.1rem;
+    }
+
+    #contenedorBilletes img {
+        height: 80px;
+    }
+
+    #opciones {
+        gap: 5px;
+        margin-top:-20px
+    }
+
+    #opcion1,
+    #opcion2 {
+        gap: 15px
+    }
+    .btn{
+        height: 40px !important;
+font-size: 1rem !important;
+padding-top: 4px !important;
+    }
+
+    #contenedorBilletes {
+        gap: 20px;
+        padding-top: 0px !important
+    }
+    #imgJuegoTerminado{
+        height: 180px !important;
+    }
 }
